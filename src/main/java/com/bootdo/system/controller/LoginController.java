@@ -57,7 +57,11 @@ public class LoginController extends BaseController {
 	@ResponseBody
 	R ajaxLogin(String username, String password) {
 		password = MD5Utils.encrypt(username, password);
+		System.out.println("username="+username);
+		System.out.println("password = " + password);
+
 		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+		System.out.println("token = " + token);
 		Subject subject = SecurityUtils.getSubject();
 		try {
 			subject.login(token);
